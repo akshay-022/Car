@@ -1,0 +1,99 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import BlogPost from '../components/BlogPost.astro';
+
+const featuredPosts = [
+  {
+    title: "The Evolution of Electric Supercars",
+    slug: "electric-supercars",
+    image: "https://images.unsplash.com/photo-1611016186353-9af58c69a533?auto=format&fit=crop&q=80",
+    excerpt: "How electric technology is revolutionizing the supercar segment...",
+    date: "2024-04-10"
+  },
+  {
+    title: "Classic Cars: Investment Guide 2024",
+    slug: "classic-cars-investment",
+    image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80",
+    excerpt: "Everything you need to know about investing in classic cars...",
+    date: "2024-04-08"
+  },
+  {
+    title: "Future of Autonomous Racing",
+    slug: "autonomous-racing",
+    image: "https://images.unsplash.com/photo-1539799139339-50c5fe1e2b1b?auto=format&fit=crop&q=80",
+    excerpt: "How AI is changing the face of motorsports...",
+    date: "2024-04-06"
+  }
+];
+---
+
+<Layout title="CarEnthusiast - Your Ultimate Car Blog">
+  <Header />
+  <main>
+    <section class="hero">
+      <h1>Welcome to CarEnthusiast</h1>
+      <p>Your destination for the latest in automotive excellence</p>
+    </section>
+
+    <section class="featured-posts">
+      <h2>Latest Articles</h2>
+      <div class="post-grid">
+        {featuredPosts.map(post => (
+          <BlogPost {...post} />
+        ))}
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 1rem;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 4rem 0;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    border-radius: 8px;
+    margin: 2rem 0;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+  }
+
+  .featured-posts {
+    padding: 2rem 0;
+  }
+
+  .featured-posts h2 {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+  }
+
+  .post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 2rem;
+    }
+  }
+</style>
